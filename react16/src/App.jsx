@@ -1,35 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [n, setN] = useState(0)
+  const [flag, setFlag] = useState(false)
+
+  const click = () => {
+    setTimeout(() => {
+      setN(v => v + 1)       // React 16: 비동기 컨텍스트에서 렌더 2번 가능
+      setFlag(f => !f)
+    }, 0)
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div>
+      <h1>React 16</h1>
+      <button onClick={click}>update in setTimeout</button>
+      <p>n: {n}</p>
+      <p>flag: {String(flag)}</p>
+    </div>
   )
 }
-
-export default App
