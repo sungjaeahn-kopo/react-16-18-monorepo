@@ -3,7 +3,7 @@ import { useState } from 'react'
 export default function AsyncBatching() {
     const [a, setA] = useState(0)
     const [b, setB] = useState(0)
-    console.log('render 18 - AsyncBatching', { a, b })
+    console.log('render 16 - AsyncBatching', { a, b })
 
     const click = () => {
         setTimeout(() => {
