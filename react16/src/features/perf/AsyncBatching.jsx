@@ -14,10 +14,10 @@ export default function AsyncBatching() {
 
     return (
         <section>
-            <h2>React 18: 비동기 자동 배칭</h2>
+            <h2>React 16: 비동기 자동 배칭 없음</h2>
             <button onClick={click}>update async</button>
             <p>a:{a} / b:{b}</p>
-            <small>콘솔의 "render 18" 횟수를 보세요.</small>
+            <small>콘솔의 "render 16" 횟수를 보세요.</small>
         </section>
     )
 }
