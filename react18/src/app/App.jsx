@@ -1,5 +1,6 @@
 import TransitionTyping from '../features/perf/TransitionTyping.jsx'
 import AsyncBatching from '../features/perf/AsyncBatching.jsx'
+import DeferredTyping from '../features/perf/DeferredTyping.jsx'
 
 export default function App() {
   return (
@@ -7,6 +8,7 @@ export default function App() {
       <h1>React 18</h1>
       <TransitionTyping />
       <AsyncBatching />
+      <DeferredTyping />
     </div>
   )
 }
