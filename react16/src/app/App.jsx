@@ -1,6 +1,7 @@
 import React from 'react'
 import AsyncBatching from '../features/perf/AsyncBatching'
 import NoTransitionTyping from '../features/perf/NoTransitionTyping'
+import '../App.css'
 
 export default function App() {
   return (
