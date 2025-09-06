@@ -47,8 +47,8 @@ export default function DeferredTyping() {
                             <span className="text-sm font-medium text-gray-700">결과: {list.length}개 항목</span>
                         </div>
                         <ul className="divide-y divide-gray-200">
-                            {list.slice(0, 30000).map((x, i) => (
-                                <li key={typeof x === 'string' ? x : i} className="px-3 py-2 text-sm hover:bg-gray-100">
+                            {list.slice(0, 1000).map((x, i) => (
+                                <li key={`${String(x)}-${i}`} className="px-3 py-2 text-sm hover:bg-gray-100">
                                     {typeof x === 'string' ? x : String(x)}
                                 </li>
                             ))}

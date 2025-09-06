@@ -8,8 +8,8 @@ export default function TransitionTyping() {
 
     const onType = (e) => {
         const v = e.target.value
-        setText(v)                   // 높은 우선순위: 입력은 즉시
-        startTransition(() => {      // 낮은 우선순위: 무거운 갱신 뒤로
+        setText(v)
+        startTransition(() => {
             setList(makeBigList(v))
         })
     }
@@ -33,17 +33,17 @@ export default function TransitionTyping() {
     }
 
     const FilterdList = () => {
-        const displayList = list.slice(0, 20000)
+        const displayList = list.slice(0, 1000)
 
         return (
             <div className="mt-3">
                 <div className="mb-3 flex items-center justify-between">
                     <span className="ml-3 text-sm font-medium text-gray-700">
-                        검색 결과: <span className="text-blue-600 font-bold">{displayList.length.toLocaleString()}개</span>
+                        결과 개수: <span className="text-blue-600 font-bold">{displayList.length.toLocaleString()}</span>
                     </span>
                     {text && (
                         <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">
-                            "{text}" 검색 중
+                            "{text}" 검색
                         </span>
                     )}
                 </div>
@@ -53,7 +53,7 @@ export default function TransitionTyping() {
                         <ul className="divide-y divide-gray-100">
                             {displayList.map((x, index) => (
                                 <li
-                                    key={x}
+                                    key={`${x}-${index}`}
                                     className="px-4 py-3 hover:bg-gray-50 transition-colors duration-150"
                                 >
                                     <div className="flex items-center">
@@ -94,12 +94,8 @@ export default function TransitionTyping() {
                             d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
                     </svg>
                 </div>
-                <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                    React 18: startTransition
-                </h2>
-                <p className="text-gray-600 text-lg">
-                    입력은 부드럽게, 무거운 작업은 백그라운드에서
-                </p>
+                <h2 className="text-3xl font-bold text-gray-800 mb-2">React 18: startTransition</h2>
+                <p className="text-gray-600 text-lg">입력은 즉시, 무거운 갱신은 백그라운드로</p>
             </div>
 
             {/* 입력 영역 */}
@@ -133,14 +129,10 @@ export default function TransitionTyping() {
                         </div>
                         <div className="flex items-center">
                             <div className={`w-2 h-2 rounded-full mr-2 ${isPending ? 'bg-yellow-400' : list.length > 0 ? 'bg-green-400' : 'bg-gray-300'}`}></div>
-                            <span className="text-gray-600">
-                                필터링: {isPending ? '처리 중' : list.length > 0 ? '완료' : '대기'}
-                            </span>
+                            <span className="text-gray-600">필터링: {isPending ? '처리 중' : (list.length > 0 ? '완료' : '대기')}</span>
                         </div>
                     </div>
-                    <div className="text-gray-500">
-                        입력 길이: {text.length}자
-                    </div>
+                    <div className="text-gray-500">입력 길이: {text.length}자</div>
                 </div>
             </div>
 
@@ -159,13 +151,11 @@ export default function TransitionTyping() {
                         </svg>
                     </div>
                     <div className="ml-3">
-                        <h3 className="text-sm font-medium text-indigo-800 mb-2">
-                            동시성 기능 체험하기
-                        </h3>
+                        <h3 className="text-sm font-medium text-indigo-800 mb-2">동시성 기능 체험하기</h3>
                         <ul className="text-sm text-indigo-700 space-y-1 list-disc list-inside">
-                            <li>빠르게 타이핑해도 입력이 끊기지 않습니다</li>
-                            <li>무거운 필터링 작업은 백그라운드에서 처리됩니다</li>
-                            <li>사용자 인터랙션이 항상 최우선으로 처리됩니다</li>
+                            <li>입력은 즉시 반영됩니다</li>
+                            <li>무거운 필터링은 백그라운드에서 처리됩니다</li>
+                            <li>사용자 인터랙션이 최우선으로 처리됩니다</li>
                         </ul>
                     </div>
                 </div>
@@ -173,3 +163,4 @@ export default function TransitionTyping() {
         </section>
     )
 }
+

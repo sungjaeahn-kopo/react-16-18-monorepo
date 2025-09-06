@@ -11,7 +11,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:16": "npm run dev -w react16 -- --port 5174",
-    "dev:18": "npm run dev -w react18 -- --port 5173"
+    "dev:18": "npm run dev -w react18 -- --port 5173",
+    "dev:all": "node scripts/dev-all.js"
   },
   "keywords": [],
   "author": "",
