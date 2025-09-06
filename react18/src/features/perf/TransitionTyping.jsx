@@ -36,9 +36,9 @@ export default function TransitionTyping() {
         const displayList = list.slice(0, 20000)
 
         return (
-            <div className="mt-6">
-                <div className="mb-4 flex items-center justify-between">
-                    <span className="text-sm font-medium text-gray-700">
+            <div className="mt-3">
+                <div className="mb-3 flex items-center justify-between">
+                    <span className="ml-3 text-sm font-medium text-gray-700">
                         검색 결과: <span className="text-blue-600 font-bold">{displayList.length.toLocaleString()}개</span>
                     </span>
                     {text && (
