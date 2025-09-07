@@ -8,13 +8,13 @@ export default function AsyncBatching() {
     const click = () => {
         setTimeout(() => {
             setA(v => v + 1)
-            setB(v => v + 1)     // 18: 비동기도 자동 배칭 → 보통 렌더 1회
+            setB(v => v + 1) // React 18: 비동기도 자동 배칭 (일반적으로 렌더 1회)
         }, 0)
     }
 
     return (
         <section className="max-w-2xl mx-auto p-8 bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl shadow-xl border border-blue-200">
-            {/* 헤더 */}
+            {/* Header */}
             <div className="text-center mb-8">
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-500 rounded-2xl mb-4 shadow-lg">
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -22,15 +22,11 @@ export default function AsyncBatching() {
                             d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                 </div>
-                <h2 className="text-3xl font-bold text-gray-800 mb-2">
-                    React 18: 비동기 자동 배칭
-                </h2>
-                <p className="text-gray-600 text-lg">
-                    비동기 상황에서도 자동으로 상태 업데이트를 배칭합니다
-                </p>
+                <h2 className="text-3xl font-bold text-gray-800 mb-2">React 18: 비동기 자동 배칭</h2>
+                <p className="text-gray-600 text-lg">비동기 상황에서도 상태 업데이트가 자동으로 배칭됩니다.</p>
             </div>
 
-            {/* 상태 표시 */}
+            {/* State View */}
             <div className="grid grid-cols-2 gap-6 mb-8">
                 <div className="bg-white rounded-xl p-6 shadow-md border border-gray-200 hover:shadow-lg transition-shadow">
                     <div className="text-center">
@@ -46,7 +42,7 @@ export default function AsyncBatching() {
                 </div>
             </div>
 
-            {/* 버튼 */}
+            {/* Button */}
             <div className="text-center mb-6">
                 <button
                     onClick={click}
@@ -60,7 +56,7 @@ export default function AsyncBatching() {
                 </button>
             </div>
 
-            {/* 설명 */}
+            {/* Notes */}
             <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
                 <div className="flex items-start">
                     <div className="flex-shrink-0">
@@ -70,32 +66,28 @@ export default function AsyncBatching() {
                         </svg>
                     </div>
                     <div className="ml-3">
-                        <h3 className="text-sm font-medium text-amber-800 mb-1">
-                            개발자 콘솔을 확인하세요
-                        </h3>
+                        <h3 className="text-sm font-medium text-amber-800 mb-1">개발자 콘솔에서 확인</h3>
                         <p className="text-sm text-amber-700">
-                            <code className="bg-amber-100 px-2 py-1 rounded text-amber-800">"render 18"</code>
-                            {' '}로그의 횟수를 통해 배칭 효과를 확인할 수 있습니다
+                            <code className="bg-amber-100 px-2 py-1 rounded text-amber-800">render 18</code>
+                            {' '}로그로 배칭 효과를 확인할 수 있습니다.
                         </p>
                     </div>
                 </div>
             </div>
 
-            {/* 기술적 설명 */}
+            {/* Details */}
             <div className="mt-6 text-center">
                 <details className="group">
                     <summary className="cursor-pointer text-gray-600 hover:text-gray-800 font-medium transition-colors">
-                        기술적 동작 원리 보기
+                        기술 동작 원리 보기
                         <span className="ml-2 group-open:rotate-180 transition-transform inline-block">▼</span>
                     </summary>
                     <div className="mt-4 p-4 bg-gray-50 rounded-lg text-left text-sm text-gray-700 border">
-                        <p className="mb-2">
-                            <strong>React 18의 자동 배칭:</strong>
-                        </p>
+                        <p className="mb-2"><strong>React 18 자동 배칭:</strong></p>
                         <ul className="list-disc list-inside space-y-1 text-xs">
-                            <li>setTimeout 내부의 상태 업데이트도 자동으로 배칭</li>
-                            <li>setA와 setB가 연속으로 호출되지만 렌더링은 1회만 발생</li>
-                            <li>Promise, fetch 등 모든 비동기 상황에서 동작</li>
+                            <li>setTimeout 등 비동기 컨텍스트에서도 상태 업데이트가 자동으로 배칭</li>
+                            <li>setA와 setB가 연속 호출되어도 렌더링은 1회만 발생</li>
+                            <li>Promise, fetch 등 대부분 비동기 상황에서 동작</li>
                         </ul>
                     </div>
                 </details>
@@ -103,3 +95,4 @@ export default function AsyncBatching() {
         </section>
     )
 }
+
